@@ -30,6 +30,29 @@ class AllDataPacket(PacketType):
     ]
 
 def basicUnitTest():
+    packet1 = RequestMovieInfo()
+    packet1.movie_name = "Frozen"
+    packet1.parameter_name = "Genre"
+    packet1_ser = packet1.__serialize__()
+    packet1_des = RequestMovieInfo.Deserialize(packet1_ser)
+    assert packet1 == packet1_des
+
+    packet2 = RequestedInfoPacket()
+    packet2.parameter_name = "Genre"
+    packet2.parameter_info = "Adventure"
+    packet2_ser = packet2.__serialize__()
+    packet2_des = RequestedInfoPacket.Deserialize(packet2_ser)
+
+    assert packet2_des == packet2
+
+    packet3 = RequestAllDataPacket()
+    data = ["ABC:123", "AVD:wer", "SDDS:4523"]
+    packet3.all_info_colon_separated = data
+    packet3_ser = packet3.__serialize__()
+    packet3_des = RequestAllDataPacket.Deserialize(packet3_ser)
+
+    assert packet3 == packet3_des
+
 
 if __name__=="__main__":
     basicUnitTest()
