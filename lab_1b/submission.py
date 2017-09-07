@@ -50,7 +50,6 @@ def basicUnitTest():
     packet3.all_info_colon_separated = data
     packet3_ser = packet3.__serialize__()
     packet3_des = RequestAllDataPacket.Deserialize(packet3_ser)
-    print(packet3_des)
 
     assert packet3 == packet3_des
 
