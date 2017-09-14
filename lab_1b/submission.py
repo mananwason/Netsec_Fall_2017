@@ -21,7 +21,10 @@ class RequestedInfoPacket(PacketType):
 class RequestAllDataPacket(PacketType):
     DEFINITION_IDENTIFIER = "lab1b_mwason.RequestedAllDataPacket"
     DEFINITION_VERSION = "1.0"
-
+    FIELDS = [
+        ("movie_name", STRING),
+        ("param", STRING)
+    ]
 class AllDataPacket(PacketType):
     DEFINITION_IDENTIFIER = "lab1b_mwason.AllDataPacket"
     DEFINITION_VERSION = "1.0"
@@ -46,6 +49,7 @@ def basicUnitTest():
     assert packet2_des == packet2
 
     packet3 = RequestAllDataPacket()
+    packet3.movie_name = "Frozen"
     data = ["ABC:123", "AVD:wer", "SDDS:4523"]
     packet3.all_info_colon_separated = data
     packet3_ser = packet3.__serialize__()
