@@ -56,11 +56,10 @@ if __name__ == "__main__":
 
     else:
         remoteAddress = mode
-        control = MoviesClient()
-        coro = playground.getConnector().create_playground_connection(control.buildProtocol, remoteAddress, 101)
+        coro = playground.getConnector().create_playground_connection(lambda: MoviesClient(), "20174.1.1.1", 101)
         transport, protocol = loop.run_until_complete(coro)
         print("Echo Client Connected. Starting UI t:{}. p:{}".format(transport, protocol))
-        loop.add_reader(sys.stdin, control.stdinAlert)
-        control.connect(protocol)
+        # loop.add_reader(sy    s.stdin, control.stdinAlert)
+        # control.connect(protocol)
         loop.run_forever()
         loop.close()
