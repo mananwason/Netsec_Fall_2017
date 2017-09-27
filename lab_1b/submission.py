@@ -22,8 +22,7 @@ class RequestAllDataPacket(PacketType):
     DEFINITION_IDENTIFIER = "lab1b_mwason.RequestedAllDataPacket"
     DEFINITION_VERSION = "1.0"
     FIELDS = [
-        ("movie_name", STRING),
-        ("param", STRING)
+        ("movie_name", STRING)
     ]
 class AllDataPacket(PacketType):
     DEFINITION_IDENTIFIER = "lab1b_mwason.AllDataPacket"
